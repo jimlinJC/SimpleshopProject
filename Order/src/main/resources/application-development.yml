@@ -1,0 +1,19 @@
+server:
+  port: 8083
+  tomcat:
+    threads:
+      max: 1000
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/simpleshop
+    username: root
+    password: csc1234
+  rabbitmq:
+    host: localhost
+    port: 5672
+    user: guest
+    password: guest

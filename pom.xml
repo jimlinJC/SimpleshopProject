@@ -22,7 +22,7 @@
 
     <modules>
         <module>Product</module>
-        <module>Order</module>
+        <module>OrderService</module>
         <module>Broker</module>
     </modules>
 

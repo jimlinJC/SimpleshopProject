@@ -16,7 +16,7 @@ spec:
             name: demo
             port:
               number: 80
-        path: /
+        path: /order/.*/checkout
         pathType: Prefix
 status:
   loadBalancer: {}

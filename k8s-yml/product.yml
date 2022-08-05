@@ -26,7 +26,7 @@ metadata:
   name: product-service
   namespace: k1s
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: product-service
@@ -38,10 +38,24 @@ spec:
         app: product-service
     spec:
       containers:
-      - image: k1s/product-service:1.0
-        imagePullPolicy: IfNotPresent
+      - image: josh951753/product:1.0
+        imagePullPolicy: Always
         name: product-service
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:mysql://mysqldb:3306/simpleshop
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: passwd
+          - name: SPRING_RABBITMQ_HOST
+            value: rabbitmq
+          - name: SPRING_RABBITMQ_PORT
+            value: 5672
+          - name: SPRING_RABBITMQ_USER
+            value: guest
+          - name: SPRING_RABBITMQ_PASSWORD
+            value: guest
         ports:
           - containerPort: 8082
         env:
 status: {}
+

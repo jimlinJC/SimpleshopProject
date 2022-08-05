@@ -38,7 +38,7 @@ spec:
         app: mysqldb
     spec:
       containers:
-      - image: k1s/mysql:8.0
+      - image: mysql:8.0
         imagePullPolicy: IfNotPresent
         name: mysql
         env:
@@ -47,4 +47,16 @@ spec:
           - name: MYSQL_ROOT_PASSWORD
             value: passwd
         resources: {}
+        livenessProbe:
+          exec:
+            command: ["mysqladmin", "ping"]
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          exec:
+            command: ["mysql", "-h", "127.0.0.1", "-uroot","-ppasswd","-e", "SELECT 1"]
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          timeoutSeconds: 1
 status: {}

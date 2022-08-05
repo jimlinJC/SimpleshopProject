@@ -30,7 +30,13 @@ spec:
             name: broker
             port:
               number: 8083
-        path: /
+        path: /order/[A-Za-z0-9]*/checkout
+      - backend:
+          service:
+            name: order-service
+            port:
+              number: 8083
+        path: /order
         pathType: Prefix
 status:
   loadBalancer: {}

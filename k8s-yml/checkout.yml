@@ -3,22 +3,17 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: rabbitmq
-  name: rabbitmq
+    app: checkout-service
+  name: checkout-service
   namespace: k1s
 spec:
   ports:
-  - name: server
-    port: 5672
+  - port: 8083
     protocol: TCP
-    targetPort: 5672
-  - name: management
-    port: 15672
-    protocol: TCP
-    targetPort: 15672
+    targetPort: 8083
   selector:
-    app: rabbitmq
-  type: ClusterIP
+    app: checkout-service
+  type: LoadBalancer
 status:
   loadBalancer: {}
 ---
@@ -27,24 +22,26 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: rabbitmq
-  name: rabbitmq
+    app: checkout-service
+  name: checkout-service
   namespace: k1s
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: rabbitmq
+      app: checkout-service
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: rabbitmq
+        app: checkout-service
     spec:
       containers:
-      - image: rabbitmq:management
-        imagePullPolicy: IfNotPresent
-        name: rabbitmq
-        resources: {}
+      - image: josh951753/checkout:1.0
+        imagePullPolicy: Always
+        name: checkout-service
+        ports:
+          - containerPort: 8083
+        env:
 status: {}

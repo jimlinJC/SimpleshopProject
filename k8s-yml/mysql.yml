@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysqldb
+  name: mysqldb
+  namespace: k1s
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: mysqldb
+  type: ClusterIP
+status:
+  loadBalancer: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysqldb
+  name: mysqldb
+  namespace: k1s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysqldb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mysqldb
+    spec:
+      containers:
+      - image: k1s/mysql:8.0
+        imagePullPolicy: IfNotPresent
+        name: mysql
+        env:
+          - name: MYSQL_DATABASE
+            value: simpleshop
+          - name: MYSQL_ROOT_PASSWORD
+            value: passwd
+        resources: {}
+status: {}

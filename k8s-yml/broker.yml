@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: broker
+  name: broker
+  namespace: k1s
+spec:
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: broker
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: broker
+  name: broker
+  namespace: k1s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: broker
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: broker
+    spec:
+      containers:
+      - image: k1s/broker:1.0
+        imagePullPolicy: IfNotPresent
+        name: broker
+        ports:
+          - containerPort: 8081
+        env:
+status: {}

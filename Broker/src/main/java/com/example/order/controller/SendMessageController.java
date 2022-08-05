@@ -14,23 +14,23 @@ public class SendMessageController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @RequestMapping(value = "/put_product", method = RequestMethod.POST)
-    public ResponseEntity putMessage(@RequestBody Product product) {
-        rabbitTemplate.setReceiveTimeout(1000000L);
-        rabbitTemplate.setReplyTimeout(1000000L);
-        try {
-            Product newProduct = (Product) rabbitTemplate.convertSendAndReceive("tpu.queue", product);
-            System.out.println(newProduct);
-
-            if (!newProduct.getName().equals("null"))
-                return ResponseEntity.ok(newProduct);
-            else {
-                return ResponseEntity.badRequest().build();
-            }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
+//    @RequestMapping(value = "/put_product", method = RequestMethod.POST)
+//    public ResponseEntity putMessage(@RequestBody Product product) {
+//        rabbitTemplate.setReceiveTimeout(1000000L);
+//        rabbitTemplate.setReplyTimeout(1000000L);
+//        try {
+//            Product newProduct = (Product) rabbitTemplate.convertSendAndReceive("tpu.queue", product);
+//            System.out.println(newProduct);
+//
+//            if (!newProduct.getName().equals("null"))
+//                return ResponseEntity.ok(newProduct);
+//            else {
+//                return ResponseEntity.badRequest().build();
+//            }
+//        } catch (Exception e) {
+//            return ResponseEntity.badRequest().build();
+//        }
+//    }
 
     @PostMapping(value = "/order/{orderid}/checkout")
     public ResponseEntity<Integer> putMessage(@PathVariable Integer orderid) {

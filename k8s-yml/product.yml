@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: product-service
+  name: product-service
+  namespace: k1s
+spec:
+  ports:
+  - port: 8082
+    protocol: TCP
+    targetPort: 8082
+  selector:
+    app: product-service
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: product-service
+  name: product-service
+  namespace: k1s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: product-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: product-service
+    spec:
+      containers:
+      - image: k1s/product-service:1.0
+        imagePullPolicy: IfNotPresent
+        name: product-service
+        ports:
+          - containerPort: 8082
+        env:
+status: {}

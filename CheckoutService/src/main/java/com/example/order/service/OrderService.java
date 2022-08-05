@@ -1,11 +1,11 @@
-package com.example.checkoutservice.service;
+package com.example.order.service;
 
 
-import com.example.checkoutservice.model.LineItem;
-import com.example.checkoutservice.model.Product;
-import com.example.checkoutservice.model.SaleOrder;
-import com.example.checkoutservice.repo.ProductRepository;
-import com.example.checkoutservice.repo.SaleOrderRepository;
+import com.example.order.model.LineItem;
+import com.example.order.model.Product;
+import com.example.order.model.SaleOrder;
+import com.example.order.repo.ProductRepository;
+import com.example.order.repo.SaleOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;

@@ -1,16 +1,12 @@
-package com.example.checkoutservice.controller;
+package com.example.order.controller;
 
 
 
-import com.example.checkoutservice.model.MessageResponse;
-import com.example.checkoutservice.model.Product;
-import com.example.checkoutservice.service.OrderService;
+import com.example.order.model.MessageResponse;
+import com.example.order.service.OrderService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 public class ReceiveMessageListener {

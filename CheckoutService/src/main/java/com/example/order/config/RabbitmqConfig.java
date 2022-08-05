@@ -1,4 +1,4 @@
-package com.example.checkoutservice.config;
+package com.example.order.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Queue;

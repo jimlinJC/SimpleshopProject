@@ -1,7 +1,7 @@
-package com.example.checkoutservice.repo;
+package com.example.order.repo;
 
 
-import com.example.checkoutservice.model.Product;
+import com.example.order.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

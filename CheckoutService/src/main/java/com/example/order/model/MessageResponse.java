@@ -1,4 +1,4 @@
-package com.example.checkoutservice.model;
+package com.example.order.model;
 
 public class MessageResponse {
     public int getCode() {

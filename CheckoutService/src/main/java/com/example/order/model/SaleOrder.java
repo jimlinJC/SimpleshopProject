@@ -1,4 +1,4 @@
-package com.example.checkoutservice.model;
+package com.example.order.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

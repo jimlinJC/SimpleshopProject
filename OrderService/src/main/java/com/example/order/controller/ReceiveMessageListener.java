@@ -17,16 +17,16 @@ public class ReceiveMessageListener {
      * 監聽Queue中是否有資料，若有資料則進行消費。
      * @param product
      */
-    @RabbitListener(queues={"tpu.queue"})
-    public Product receive(Product product) {
-        try {
-            Product newProduct = productService.addProduct(product);
-            return newProduct;
-        } catch (Exception e) {
-            Product newProduct = new Product();
-            newProduct.setName("null");
-            return newProduct;
-        }
-    }
+//    @RabbitListener(queues={"tpu.queue"})
+//    public Product receive(Product product) {
+//        try {
+//            Product newProduct = productService.addProduct(product);
+//            return newProduct;
+//        } catch (Exception e) {
+//            Product newProduct = new Product();
+//            newProduct.setName("null");
+//            return newProduct;
+//        }
+//    }
 
 }

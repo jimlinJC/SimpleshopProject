@@ -23,6 +23,7 @@
     <modules>
         <module>Product</module>
         <module>OrderService</module>
+        <module>CheckoutService</module>
         <module>Broker</module>
     </modules>
 
